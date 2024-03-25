@@ -1,0 +1,63 @@
+.botoes-acao.ui.buttons button.ui.button {
+  text-align: center;
+  padding: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.2s ease-in-out; 
+  margin: 0 auto 10px;
+}
+
+.botoes-acao.ui.buttons button.ui.button:active {
+  background-color: #ccc;
+}
+
+.botoes-acao.ui.buttons button.ui.button#promover:active {
+  background-color: #018c35;
+}
+
+.botoes-acao.ui.buttons button.ui.button#advertir:active {
+  background-color: #9e8400d1;
+}
+
+.botoes-acao.ui.buttons button.ui.button#rebaixar:active {
+  background-color: #b53b01d9;
+}
+
+.botoes-acao.ui.buttons button.ui.button#demitir:active {
+  background-color: #830202d9;
+}
+
+
+.botoes-acao.ui.buttons button.ui.button:active {
+  background-color: #ccc;
+}
+
+@media (min-width: 768px) {
+  .botoes-acao.ui.buttons button.ui.button {
+    width: 80px;
+    height: 40px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .botoes-acao.ui.buttons button.ui.button {
+    width: 44px;
+    height: 20px;
+    font-size:10px;
+  }
+}
+
+.botoes-acao.ui.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .botoes-acao.ui.buttons {
+    gap:px;
+  }
+}
+
