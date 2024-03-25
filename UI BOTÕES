@@ -1,0 +1,15 @@
+<div class="ui left floated info">
+  <h2 class="nickname"><span>-Sr.Gabriel</span></h2>
+  <p class="patente"><b>Patente</b> <span>Fundador Majoritário</span></p>
+  <p class="status"><b>Status</b> <span>Ativado</span></p>
+  <p class="data"><b>Membro Desde</b> <span>30/01/2024</span></p>
+  <p class="ultimapromocao"><b>Última Promoção</b> <span>12/03/2024 18:11</span></p>
+  <p class="tempoNaPatente"><b>Dias na Patente</b> <span>12 Dias</span></p>
+  <p class="numAdv"><b>Número de Advertências</b> <span>0</span></p>
+  <div class="botoes-acao ui buttons">
+    <button class="ui button green" id="promover">Promover</button>
+    <button class="ui button yellow" id="advertir">Advertir</button>
+    <button class="ui button orange" id="rebaixar">Rebaixar</button>
+    <button class="ui button red" id="demitir">Demitir</button>
+  </div>
+</div>
