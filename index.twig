@@ -1,12 +1,11 @@
 {% import "/block/base.twig" as base %}
 
-{{ base.header('Lista de O.C','list',"") }}
-
+{{ base.header('Lista de Presença - O.B','list',"") }}
 
 
 {# Begin Lista #}
 <table class="ui table">
-  {{thead("#","Aplicador","Horários","Data","Status","Apelidos","Ações")}}
+  {{thead("ID","Aplicador","Horários","Data","Status","Ações")}}
   {% if lista|length > 0 %}
     {% for item in lista %}
       <tr>
@@ -15,7 +14,6 @@
         {{td("<p><b>Horário de Início</b> "~item.hora_inicio~"</p><p><b>Horário de Termino</b> "~item.hora_termino~"</p>")}}
         {{td(item.data ? item.data|date("d/m/Y") : "-")}}
         {{td(base.status(item.status))}}
-        {{td(item.apelidos)}}
         {{td(base.button("ver",link ~ '/ver/' ~ item.id))}}
       </tr>
     {% endfor%}

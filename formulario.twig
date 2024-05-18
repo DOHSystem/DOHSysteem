@@ -1,19 +1,28 @@
 {% import "/block/base.twig" as base %}
 
+
+<div class="field">
+{{base.input({disabled,name:"ob",
+label: "Oficial de Comando",
+placeholder: "Digite o nickname do oficial de comando",
+type:"text",value: item.ob ?? ""
+})}}
+</div>
+
 <div class="field">
   {{ base.input({
     disabled,
-    name: "oc",
-    label: "Quem assumiu:",
-    placeholder: "Digite o nickname corretamente",
+    name: "ob",
+    label: "Quem assumiu O.B:",
+    placeholder: "Digite o nickname do oficial de base",
     type: "text",
-    value: item.oc ?? ""
+    value: item.ob ?? ""
   }) }}
 </div>
 
 <div class="two fields">
   <div class="field">
-    <label for="hora_inicio">Horário de Início do O.C</label>
+    <label for="hora_inicio">Horário de Início</label>
     {{ base.input({
       disabled,
       name: "hora_inicio",
@@ -25,7 +34,7 @@
   </div>
 
   <div class="field">
-    <label for="hora_termino">Horário de Término do O.C</label>
+    <label for="hora_termino">Horário de Término</label>
     {{ base.input({
       disabled,
       name: "hora_termino",
@@ -37,33 +46,6 @@
   </div>
 </div>
 
-<div class="two fields">
-  <div class="field">
-    <label for="lotas_no_horario">Teve lotas no horário?</label>
-    <div class="inline fields">
-      <div class="field">
-        <div class="ui radio checkbox">
-          <input type="radio" id="lotas_sim" name="lotas_no_horario" value="sim" {{ disabled ? 'disabled' }} {{ item.lotas_no_horario == 'sim' ? 'checked' }}>
-          <label for="lotas_sim">Sim</label>
-        </div>
-      </div>
-      <div class="field">
-        <div class="ui radio checkbox">
-          <input type="radio" id="lotas_nao" name="lotas_no_horario" value="nao" {{ disabled ? 'disabled' }} {{ item.lotas_no_horario == 'nao' ? 'checked' }}>
-          <label for="lotas_nao">Não</label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="field" id="nickname_lotadores_field" aria-labelledby="lotadores_label" {% if item.lotas_no_horario != 'sim' %}data-nickname-disabled="true"{% endif %}>
-  <label for="usuarios" id="lotadores_label">Nickname dos lotadores</label>
-  <div class="ui fluid {{ disabled ? 'disabled' }} selection multiple search dropdown noload" id="usuarios" aria-labelledby="lotadores_label">
-    <input type="hidden" name="visitantes" {{ disabled ? 'readonly' }} value="{{ item.visitantes }}">
-    <div class="default text">Preencha os nicknames dos lotadores</div>
-  </div>
-</div>
 
 {% if page == "editar" %}
   {% set options = ["Aprovado", "Pendente", "Reprovado", "Cancelado", "Oculto"] %}
