@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Polícia DOH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="teladecadastro.css" rel="stylesheet">
+</head>
+<body>
+    <div class="ui container">
+        <div class="ui stackable centered grid">
+            <div class="sixteen wide column">
+                <!-- Card -->
+                <div class="ui card card-container">
+                    <div class="card-border"></div> <!-- Adiciona a borda animada -->
+                    <div class="ui card content">
+                        <div class="logo-container">
+                            <img src="https://imgur.com/eC8LhvQ.png" alt="Logo">
+                        </div>
+                        <h2 class="heading">Cadastro - Polícia DOH</h2>
+                        <p class="message">
+                            Sua carreira militar está apenas começando. Ao se cadastrar na Polícia DOH, você está dando o primeiro passo para uma jornada cheia de desafios emocionantes e conquistas significativas. Aqui, você terá a oportunidade de crescer, desenvolver habilidades únicas e fazer a diferença na comunidade. Não perca a chance de fazer parte de algo grandioso.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="sixteen wide column">
+                <!-- Formulário de Cadastro -->
+                <div class="form-panel">
+                    <form class="ui large form">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="cadastro[username]" placeholder="Seu Nick do Habbo" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="envelope icon"></i>
+                                <input type="email" name="cadastro[email]" placeholder="Seu Email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="cadastro[senha]" placeholder="Sua Senha do System" required>
+                            </div>
+                            <span class="password-info">Sua senha para acesso ao System, <b>não</b> do jogo.</span>
+                        </div>
+                        <div class="field">
+                            <p class="mission-code">Cole o código na sua missão: <b></b></p>
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="cadastro[concordar]" tabindex="0" required>
+                                <label>Concordo com os Termos de Uso</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="_token" value="FJOUILnD0xCs+BGvQ2DE7RVQWK4=">
+                        <div class="btn-container">
+                            <button class="ui fluid large submit button finalize-registration">FINALIZAR CADASTRO</button>
+                            <a href="file:/C:/Users/weric/OneDrive/Documentos/DOHSystem/teladelogin.html" class="ui fluid large secondary button">ENTRAR NO SYSTEM</a>
+</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>ESTE SITE NÃO POSSUI VÍNCULOS OU NÃO É OPERADO PELA SULAKE CORPORATION OY E NÃO É PARTE DO HABBO HOTEL®.</p>
+            <p>APLICUP SYSTEM 2024 © - TODOS OS DIREITOS RESERVADOS.</p>
+        </div>
+    </footer>
+</div>
+</div>
+</div> <script src="/template/default/assets/js/semantic.min.js" type="text/javascript"></script> <script type="text/javascript">
+        	$(function(){
+        	    var liberar = false;
+        	    $(document).on('submit','form[data-confirm]',function(e){
+        	        if(liberar){ liberar=false; return true;}
+        	        e.preventDefault();
+        	        _this = this;
+        	        var text = $(this).attr("data-confirm");
+        	        modalConfirm(text,function(result){
+        	            if(result){
+        	                liberar = true;
+        	                $(_this).submit();
+        	            }
+        	        });
+        	        return false;
+        	    });
+        	});
+        	$(document).on("click","#openModal",function(e){
+                e.preventDefault();
+                var id = $(this).attr("href");
+                $(".modal"+id).modal("show");
+            })
+    		function loadScripts(){
+    			$('.ui.dropdown:not(.noload)').dropdown();	
+    			$('.ui.checkbox:not(.noload)').checkbox();
+    			$('.ui.progress:not(.noload)').progress({
+    			    value:1,
+    			    total:100,
+                    text:{
+                        active:'Enviando',
+                        ratio: '{value} de {total}',    
+                        success : 'Arquivo enviado!'
+                    }
+                  });
+    		}
+            loadScripts();
+            /*
+            let deferredPrompt;
+            const addBtn = document.querySelector('.add-button');
+            addBtn.style.display = 'none';
+            
+            window.addEventListener('beforeinstallprompt', (e) => {
+                alert('Parou');
+              // Prevent Chrome 67 and earlier from automatically showing the prompt
+              e.preventDefault();
+              // Stash the event so it can be triggered later.
+              deferredPrompt = e;
+              // Update UI to notify the user they can add to home screen
+              addBtn.style.display = 'block';
+            
+              addBtn.addEventListener('click', (e) => {
+                // hide our user interface that shows our A2HS button
+                addBtn.style.display = 'none';
+                // Show the prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                      console.log('User accepted the A2HS prompt');
+                    } else {
+                      console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                  });
+              });
+            });*/
+		</script>
+<div id="listMessage"></div>
+<script type="text/javascript">
+        const extractHostname = (url) => {
+            let hostname;
+            if (url.indexOf("//") > -1) {
+                hostname = url.split('/')[2];
+            }else {
+                hostname = url.split('/')[0];
+            }
+            hostname = hostname.split(':')[0];
+            hostname = hostname.split('?')[0];
+            return hostname;
+        }
+        const whitelist = ['javascript','systemhb.net','aplicupsystem.com','#','javascript:;','javascript:void(0);','javascript:window.history.back();','',window.location.host];
+        $(document).on("click","a",function(e){
+            if(e.isDefaultPrevented() === false){
+                const href = $(this).attr("href");
+                if(href == undefined || href == null || href == "") return true;
+                try{
+                    
+                    const url = new URL(href);
+                    if(url.protocol == "http:" || url.protocol == "https:"){
+                        
+                        const target = $(this).attr("target");
+            	        const host = extractHostname(href);
+            	        if(whitelist.includes(host) || href.includes("#")) return true;
+            	        e.preventDefault();
+            	        
+            	        const urlSimple = new URL(href);
+                        urlSimple.searchParams.delete("_gl")
+            	        modalConfirm("Você está saindo do System","<p>Esse link levará você para <b>fora</b> do ambiente <b>do System</b> e não poderemos certificar sua segurança.</p><code style='line-break: anywhere;'>"+urlSimple.toString()+"</code><p>Tem certeza que deseja continuar?</p>",function(result){
+            	            if(result){
+            	                if(target == "_blank") return window.open(href);
+            	                
+            	                return window.location = href;      
+            	            }
+            	        });
+        
+        	            return false;
+                    }
+                }catch(e){
+                    
+                }
+            }
+        });
+    </script>
+<script async="" src="https://js.hcaptcha.com/1/api.js" defer="" type="text/javascript"></script>
+<script type="text/javascript">
+    onload(() => {
+    
+        $("#modalCaptcha").modal({
+            onHide: () => {
+                captcha = false
+                return true;
+            }
+        });
+    
+        let captcha = false,captchaLoading = false;
+        $(document).on("submit","#page_external form",function(e){
+            const form = $(this);
+            if(captcha == false){
+                e.preventDefault();
+                $("#modalCaptcha").modal("show")
+                if(!captchaLoading){
+                    
+                hcaptcha.render('hCaptcha', {
+                    sitekey: 'c91ae20d-e06b-4010-a295-fce886f56760',
+                   // theme: 'dark',
+                   'callback': (code) => {
+                       form.append(`<input type="hidden" name='h-captcha-response' value='${code}'>`);//.val(code);
+                       captcha = true;
+                       form.submit();
+                   },
+                    'error-callback': 'onError',
+                  });
+                }
+                  captchaLoading = true;
+                return false;
+            }
+        })
+    })
+    </script>
+
+
+
+</div><deepl-input-controller></deepl-input-controller><div class="ui dimmer modals page"><div class="ui modal basic mini" style="background:transparent;" id="modalCaptcha">
+<div class="content">
+<div id="hCaptcha"></div>
+</div>
+</div></div></body></html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</body>
+</html>

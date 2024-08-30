@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha - Polícia DOH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="recuperarsenha.css" rel="stylesheet">
+</head>
+<body>
+    <div class="ui container">
+        <div class="ui stackable centered grid">
+            <div class="sixteen wide column">
+                <!-- Card -->
+                <div class="ui card card-container">
+                    <div class="card-border"></div>
+                    <div class="ui card content">
+                        <div class="logo-container">
+                            <img src="https://imgur.com/eC8LhvQ.png" alt="Logo" class="logo-img">
+                        </div>
+                        <h2 class="heading">Recuperar Senha</h2>
+                        <p class="message">
+                            Esqueceu sua senha? Não se preocupe, estamos aqui para ajudar! Preencha os campos abaixo e logo você estará de volta ao seu system. Se você já lembra da sua senha, clique em "Entrar no System"!
+
+                        </p>
+                    </div>
+                </div>                
+            <div class="sixteen wide column">
+                <!-- Formulário de Recuperação -->
+                <div class="form-panel">
+                    <form class="ui large form">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="recuperacao[username]" placeholder="Seu Nick do Habbo" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="envelope icon"></i>
+                                <input type="email" name="recuperacao[email]" placeholder="Seu Email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input password-wrapper">
+                                <i class="lock icon"></i>
+                                <input type="password" name="recuperacao[senha]" id="password" placeholder="Sua Nova Senha do System" required>
+                                <button type="button" id="toggle-password" class="show-password-btn">
+                                    <i class="eye icon"></i>
+                                </button>
+                            </div>
+                            <span class="password-info">Sua senha para acesso ao System, <b>não</b> do jogo.</span>
+                        </div>
+                        <div class="field">
+                            <p class="mission-code">Cole o código na sua missão: <b></b></p>
+                        </div>
+                        <div class="btn-container">
+                            <button type="submit" class="ui fluid large submit button">RECUPERAR CONTA</button>
+                            <a href="teladelogin.html" class="ui fluid large secondary button">ENTRAR NO SYSTEM</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>ESTE SITE NÃO POSSUI VÍNCULOS OU NÃO É OPERADO PELA SULAKE CORPORATION OY E NÃO É PARTE DO HABBO HOTEL®.</p>
+            <p>APLICUP SYSTEM 2024 © - TODOS OS DIREITOS RESERVADOS.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#toggle-password').on('click', function() {
+                const passwordField = $('#password');
+                const type = passwordField.attr('type') === 'password' ? 'text' : 'password';
+                passwordField.attr('type', type);
+                $(this).find('i').toggleClass('eye icon eye slash icon');
+            });
+        });
+    </script>
+</body>
+</html>
