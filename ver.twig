@@ -1,0 +1,38 @@
+{% import "/block/base.twig" as base %}
+<div class='ui segments'>
+	<div class='ui segment'>
+		<b>VISUALIZANDO RELATÓRIO - O.G</b>	
+		{{item is true ? base.status(item.status)}}
+	</div>
+	{{alert.show()}}
+	<div class='ui segment'>
+		<form class="ui form">
+			{% if item is false %}
+			    {{error(404)}}
+			{% else %}
+		        {% if permission("System."~package~".list") or item.id_aplicador == conta.id %}
+    				<div class="field">
+    					<label>Aplicador</label>
+    					<input type="text" value="{{item.aplicador ?? "O aplicador foi apagado"}}"  readonly>
+    				</div>
+            		{% include twigPath~'/formulario.twig' %}
+    				{% set permEditar = permission("System."~package~".edit") %}
+    				{% set permApagar = permission("System."~package~".del") %}
+    
+    				{% if permEditar or permApagar %}
+    					<div class='ui center aligned grid'>
+    						<div class="column">
+    							{{permEditar ? base.button("editar",link~'/editar/'~item.id)}}
+    							{{permApagar ? base.button("apagar",link~'/apagar/'~item.id)}}
+    							{{base.button("voltar",link)}}
+    
+    						</div>
+    					</div>
+    				{% endif %}  {# end permEditar or permApagar #}
+    			{% else %}
+    			    {{error(403)}}
+    			{% endif %}
+			{% endif %} {# end if item is false #}
+		</form>
+	</div>
+</div>
