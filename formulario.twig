@@ -1,90 +1,83 @@
 {% import "/block/base.twig" as base %}
 
-<div class="field">
-    {{ base.input({
-        disabled,
-        name: "oc",
-        label: "Oficial de Comando",
-        placeholder: "Digite o nickname do oficial de comando",
-        type: "text",
-        value: item.oc ?? ""
-    }) }}
-</div>
+<div class="ui form">
+    <div class="two fields">
+        <div class="field">
+            {{ base.input({
+                disabled,
+                name: "oc",
+                label: "Oficial de Comando",
+                placeholder: "Digite o nickname do oficial de comando",
+                type: "text",
+                value: item.oc ?? "",
+                required: true
+            }) }}
+        </div>
 
-<div class="field">
-    {{ base.input({
-        disabled,
-        name: "ob",
-        label: "Quem assumiu O.G:",
-        placeholder: "Digite o nickname do oficial de guarda",
-        type: "text",
-        value: item.ob ?? ""
-    }) }}
-</div>
+        <div class="field">
+            {{ base.input({
+                disabled,
+                name: "militar_nick",
+                label: "Nick do Militar",
+                placeholder: "Digite o nickname do militar",
+                type: "text",
+                value: item.militar_nick ?? "",
+                required: true
+            }) }}
+        </div>
+    </div>
 
-<div class="two fields">
+    <div class="two fields">
+        <div class="field">
+            <label for="motivo_pendencia">Motivo da Pendência</label>
+            <select name="motivo_pendencia" id="motivo_pendencia" class="ui fluid dropdown" required>
+                <option value="" disabled selected>Selecione o motivo</option>
+                <option value="sem_caixas" {% if item.motivo_pendencia == 'sem_caixas' %}selected{% endif %}>Sem Caixas</option>
+                <option value="sem_trocas" {% if item.motivo_pendencia == 'sem_trocas' %}selected{% endif %}>Sem Trocas</option>
+                <option value="sem_treinos" {% if item.motivo_pendencia == 'sem_treinos' %}selected{% endif %}>Sem Treinos</option>
+            </select>
+        </div>
+
+        <div class="field">
+            {{ base.input({
+                name: "pendencia_horario",
+                label: "Horário da Pendência",
+                type: "time",
+                placeholder: "Hora:Minuto Ex: 10:00",
+                value: item.pendencia_horario ?? "",
+                required: true
+            }) }}
+        </div>
+    </div>
+
     <div class="field">
-        <label for="hora_inicio">Horário de Início</label>
         {{ base.input({
-            disabled,
-            name: "hora_inicio",
-            id: "hora_inicio",
-            type: "time",
-            placeholder: "Hora:Minuto Ex: 10:00",
-            value: item.hora_inicio ?? ""
+            name: "valor_moedas",
+            label: "Valor a Receber (Moedas)",
+            type: "number",
+            placeholder: "Ex: 100",
+            value: item.valor_moedas ?? "",
+            min: 0,
+            required: true
         }) }}
     </div>
 
-    <div class="field">
-        <label for="hora_termino">Horário de Término</label>
-        {{ base.input({
-            disabled,
-            name: "hora_termino",
-            id: "hora_termino",
-            type: "time",
-            placeholder: "Hora:Minuto Ex: 11:00",
-            value: item.hora_termino ?? ""
-        }) }}
-    </div>
-</div>
-
-<div class="two fields">
-  <div class="field">
-    <label for="lotas_no_horario">Teve lotas no horário?</label>
-    <div class="inline fields">
-      <div class="field">
-        <div class="ui radio checkbox">
-          <input type="radio" id="lotas_sim" name="lota" value="0" {{ disabled ? 'disabled' }} {{ item.lota == '0' ? 'checked' }}>
-          <label for="lotas_sim">Sim</label>
+    {% if page == "editar" %}
+        <!-- Status -->
+        <div class="field">
+            <label for="status">Status</label>
+            <div class="ui fluid selection dropdown">
+                <input type="hidden" name="status" id="status" value="{{ item.status ?? '' }}" required>
+                <i class="dropdown icon"></i>
+                <div class="default text">Selecione o status</div>
+                <div class="menu">
+                    <div class="item" data-value="Pendente">Pagamento em Verificação</div>
+                    <div class="item" data-value="Aprovado">Pagamento Aprovado</div>
+                    <div class="item" data-value="Pago">Pagamento Realizado</div>
+                    <div class="item" data-value="Cancelado">Pagamento Cancelado</div>
+                    <div class="item" data-value="Oculto">Pagamento Oculto</div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="field">
-        <div class="ui radio checkbox">
-          <input type="radio" id="lotas_nao" name="lota" value="1" {{ disabled ? 'disabled' }} {{ item.lota == '1' ? 'checked' }}>
-          <label for="lotas_nao">Não</label>
-        </div>
-      </div>
-    </div>
-  </div>
+    {% endif %}
 </div>
-
-<div class="field" id="nickname_lotadores_field" aria-labelledby="lotadores_label" {% if item.lotas_no_horario != 'sim' %}data-nickname-disabled="true"{% endif %}>
-  <label for="usuarios" id="lotadores_label">Nickname dos lotadores</label>
-  <div class="ui fluid {{ disabled ? 'disabled' }} selection multiple search dropdown noload" id="usuarios" aria-labelledby="lotadores_label">
-    <input type="hidden" name="lotadores" {{ disabled ? 'readonly' }} value="{{ item.lotadores }}">
-    <div class="default text">Preencha os nicknames dos lotadores</div>
-  </div>
-</div>
-
-{# ADCIONA UM CAMPO DE OBSERVAÇÃO AQUI PARA PREENCHEREM #}
-
-{% if page == "editar" %}
-    {% set options = ["Aprovado", "Pendente", "Reprovado", "Cancelado", "Oculto"] %}
-    {{ base.input({
-        name: 'status',
-        type: 'select',
-        label: 'Status',
-        options,
-        value: item.status
-    }) }}
-{% endif %}
