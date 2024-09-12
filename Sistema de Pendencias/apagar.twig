@@ -1,0 +1,47 @@
+{% import "/block/base.twig" as base %}
+<div class='ui segments'>
+	<div class='ui segment'>
+		<b>APAGAR PENDÊNCIA -  O.C</b>	
+	</div>
+	{{alert.show()}}
+	{% if alert.color != "green" %}
+		<div class='ui segment'>
+			<form class="ui form" method="POST">
+			    {% if permission("System."~package~".del") %}
+    				{% if item is false %}
+    				    {{error(404)}}
+    				{% else %}
+    				    <div class="field">
+    						<label>ID</label>
+    						<input type="text" value="{{item.id}}"  readonly>
+    					</div>
+    					<div class="field">
+    						<label>Aplicador</label>
+    						<input type="text" value="{{item.aplicador ?? "O aplicador foi apagado"}}"  readonly>
+    					</div>
+    					<div class="field">
+    						<label>Título</label>
+    						<input type="text" value="{{item.titulo}}"  readonly>
+    					</div>
+    					<div class="ui icon yellow attached message">
+                            <div class="content">
+                            <div class="header">Tenha em mente</div>
+                                <p>Quando você apagar esse projeto, todos os dados serão deletados do sistema e não será possivel recupera-lós.</p>
+                            </div>
+                        </div>
+                        <br>
+    					<div class='ui center aligned grid'>
+    						<div class="column">
+    						    <input type='hidden' name='_token' value='{{token.create()}}'>
+    							{{base.button("apagar")}}
+    							{{base.button("voltar",link ~"/ver/"~item.id)}}
+    						</div>
+    					</div>
+    				{% endif %} {# end if item is false #}
+    			{% else %}
+    			    {{error(403)}}
+    			{% endif %}
+			</form>
+		</div>
+	{% endif %}
+</div>
